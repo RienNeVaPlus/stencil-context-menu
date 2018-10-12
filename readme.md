@@ -5,7 +5,7 @@
 
 Multi-level context menu component with lists and toggles.
 
-![alt text](src/assets/screenshots/screenshot.png "Logo Title Text 1")
+![Screenshot](src/assets/screenshots/screenshot.png)
 
 
 ## Example
