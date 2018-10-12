@@ -1,6 +1,6 @@
 {
   "name": "stencil-context-menu",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Stencil Context-Menu",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
