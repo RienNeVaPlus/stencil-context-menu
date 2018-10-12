@@ -1,7 +1,7 @@
 {
-  "name": "my-component",
+  "name": "stencil-context-menu",
   "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "description": "Stencil Context-Menu",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
   "types": "dist/types/components.d.ts",
@@ -17,16 +17,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@stencil/core": "~0.13.2"
+    "@stencil/core": "~0.13.2",
+    "@stencil/less": "^0.1.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ionic-team/stencil-component-starter.git"
-  },
-  "author": "Ionic Team",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ionic-team/stencil"
-  },
-  "homepage": "https://github.com/ionic-team/stencil"
+  "author": "RienNeVaPlus",
+  "license": "MIT"
 }

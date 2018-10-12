@@ -4,12 +4,51 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Stencil Component Starter</title>
-  <script src="/build/mycomponent.js"></script>
+  <link href="/build/context-menu.css" rel="stylesheet">
+  <script src="/build/context-menu.js"></script>
 
 </head>
 <body>
-
-  <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
-
+  <section>
+    <h1>&lt;context-menu&gt;</h1>
+    <div class="box" style="padding:30px;margin-right:10px">
+      <strong>Trigger #1</strong><br/>
+      <small><em>Right click</em></small>
+      <context-menu>
+        <div>Open<aside class="uc">enter</aside></div>
+        <div class="sticky">Sticky</div>
+        <hr/>
+        <div>
+          Nested...
+          <context-menu>
+            <div>
+              Groups
+              <context-menu>
+                <div data-group="groupId" class="selected">Apples</div>
+                <div data-group="groupId">Bananas</div>
+                <div data-group="groupId">Oranges</div>
+              </context-menu>
+            </div>
+            <div>
+              Toggles
+              <context-menu>
+                <div data-toggle="checked" class="checked">Basic toggle</div>
+                <div data-toggle="crossed" class="checked">Extended toggle</div>
+              </context-menu>
+            </div>
+            <hr/>
+            <div class="sticky selected">Static prefix</div>
+          </context-menu>
+        </div>
+      </context-menu>
+    </div>
+    <div class="box" style="padding:30px">
+      <strong>Trigger #2</strong><br/>
+      <small><em>Right click</em></small>
+      <context-menu>
+        <div>Menu 2</div>
+      </context-menu>
+    </div>
+  </section>
 </body>
 </html>

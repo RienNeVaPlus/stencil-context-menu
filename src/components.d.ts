@@ -12,40 +12,74 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface MyComponent {
-    'first': string;
-    'last': string;
-    'middle': string;
+  interface ContextMenu {
+    /**
+    * Closes the menu
+    */
+    'close': () => Promise<any>;
+    /**
+    * Overlapping of child <> parent menus in pixel (default `8`)
+    */
+    'horizontalOverlap': number;
+    /**
+    * Opens the menu
+    */
+    'open': (pos: any) => Promise<any>;
+    /**
+    * Sets the css attribute z-index to a custom value. Default is `100` whereas every child increments the value of its parent by one.
+    */
+    'zIndex': number;
   }
-  interface MyComponentAttributes extends StencilHTMLAttributes {
-    'first'?: string;
-    'last'?: string;
-    'middle'?: string;
+  interface ContextMenuAttributes extends StencilHTMLAttributes {
+    /**
+    * Overlapping of child <> parent menus in pixel (default `8`)
+    */
+    'horizontalOverlap'?: number;
+    /**
+    * Fires when the menu is `close`d
+    */
+    'onHide'?: (event: CustomEvent) => void;
+    /**
+    * Fires on `mouse down` of any row with the attribute `data-group`
+    */
+    'onSelect'?: (event: CustomEvent) => void;
+    /**
+    * Fires when the menu is `open`ed
+    */
+    'onShow'?: (event: CustomEvent) => void;
+    /**
+    * Fires on `mouse down` of any row with the attribute `data-toggle`
+    */
+    'onToggle'?: (event: CustomEvent) => void;
+    /**
+    * Sets the css attribute z-index to a custom value. Default is `100` whereas every child increments the value of its parent by one.
+    */
+    'zIndex'?: number;
   }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'MyComponent': Components.MyComponent;
+    'ContextMenu': Components.ContextMenu;
   }
 
   interface StencilIntrinsicElements {
-    'my-component': Components.MyComponentAttributes;
+    'context-menu': Components.ContextMenuAttributes;
   }
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLContextMenuElement extends Components.ContextMenu, HTMLStencilElement {}
+  var HTMLContextMenuElement: {
+    prototype: HTMLContextMenuElement;
+    new (): HTMLContextMenuElement;
   };
 
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement
+    'context-menu': HTMLContextMenuElement
   }
 
   interface ElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'context-menu': HTMLContextMenuElement;
   }
 
 
