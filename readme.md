@@ -46,6 +46,7 @@ Multi-level context menu component with lists and toggles.
 
 | Property            | Attribute            | Description                                                                                                                       | Type     |
 | ------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `triggerClass`      | `trigger-class` | Class name to add to the trigger element (default `hasContextMenu`)                                                                       | `number` |
 | `horizontalOverlap` | `horizontal-overlap` | Overlapping of child <> parent menus in pixel (default `8`)                                                                       | `number` |
 | `zIndex`            | `z-index`            | Sets the css attribute z-index to a custom value. Default is `100` whereas every child increments the value of its parent by one. | `number` |
 

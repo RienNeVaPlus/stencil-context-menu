@@ -26,6 +26,10 @@ export namespace Components {
     */
     'open': (pos: any) => Promise<any>;
     /**
+    * Trigger elements be marked using a class name
+    */
+    'triggerClass': string;
+    /**
     * Sets the css attribute z-index to a custom value. Default is `100` whereas every child increments the value of its parent by one.
     */
     'zIndex': number;
@@ -51,6 +55,10 @@ export namespace Components {
     * Fires on `mouse down` of any row with the attribute `data-toggle`
     */
     'onToggle'?: (event: CustomEvent) => void;
+    /**
+    * Trigger elements be marked using a class name
+    */
+    'triggerClass'?: string;
     /**
     * Sets the css attribute z-index to a custom value. Default is `100` whereas every child increments the value of its parent by one.
     */
