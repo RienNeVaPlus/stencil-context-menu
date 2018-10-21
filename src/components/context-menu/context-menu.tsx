@@ -1,13 +1,18 @@
 import { Component, Prop, State, Element, Listen, Method, Event, EventEmitter } from '@stencil/core';
 
 @Component({
-    tag: 'context-menu',
-    styleUrl: 'context-menu.less'
-    // shadow: true
+	tag: 'context-menu',
+	styleUrl: 'context-menu.less'
+	// shadow: true
 })
 export class ContextMenu {
 	// the element
 	@Element() el: HTMLElement;
+
+	/**
+	 * Trigger elements be marked using a class name
+	 */
+	@Prop() triggerClass: string = 'hasContextMenu';
 
 	/**
 	 * Overlapping of child <> parent menus in pixel (default `8`)
@@ -18,7 +23,7 @@ export class ContextMenu {
 	 * Sets the css attribute z-index to a custom value.
 	 * Default is `100` whereas every child increments the value of its parent by one.
 	 */
-	@Prop({mutable:true}) zIndex: number = 100;
+	@Prop({mutable:true}) zIndex: number = 1000000;
 
 	// @Prop({mutable:true}) visible: boolean = false;
 
@@ -66,6 +71,9 @@ export class ContextMenu {
 
 		// ack trigger
 		this.trigger = this.el.parentElement;
+
+		// add class "hasContextMenu" to trigger
+		this.trigger.classList.add(this.triggerClass);
 
 		// loop rows
 		for(let el of Array.from(this.el.children)){
@@ -183,7 +191,7 @@ export class ContextMenu {
 	 * Listen for document click to close menu
 	 */
 	@Listen('document:click')
-	async documentClick(ev){
+	async documentClick(ev): Promise<void> {
 		if(ev.target.classList.contains('sticky'))
 			return null;
 
@@ -199,8 +207,13 @@ export class ContextMenu {
 		// always close at first
 		await this.close();
 
-		// check for trigger in event path
-		if(!ev.composedPath().includes(this.trigger))
+		// make sure there are no other menus having a nearer trigger
+		if(!ev.composedPath().reduce((res, el) => {
+			if(res === null && el.classList.contains(this.triggerClass)){
+				return el === this.trigger;
+			}
+			return res;
+		}, null))
 			return null;
 
 		ev.preventDefault();
